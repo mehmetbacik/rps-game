@@ -29,7 +29,6 @@ export default class GameScene extends Phaser.Scene {
         .setInteractive();
 
       button.on("pointerdown", () => {
-        console.log(`Player chose: ${choice}`);
         this.scene.start("UIScene", { playerChoice: choice });
       });
     });

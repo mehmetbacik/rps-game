@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-export class UIScene extends Phaser.Scene {
+export default class UIScene extends Phaser.Scene {
   constructor() {
     super({ key: 'UIScene' });
   }

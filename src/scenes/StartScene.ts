@@ -1,24 +1,32 @@
-import Phaser from 'phaser';
+import Phaser from "phaser";
 
-export class StartScene extends Phaser.Scene {
-    constructor() {
-        super({ key: 'StartScene' });
-    }
+export default class StartScene extends Phaser.Scene {
+  constructor() {
+    super({ key: "StartScene" });
+  }
 
-    preload() {
-        this.load.image('sky', 'assets/logo.svg');
-    }
+  create() {
+    const { width, height } = this.scale;
 
-    create() {
-        this.add.image(400, 300, 'sky');
-        const startButton = this.add.text(300, 500, 'Click to Start', {
-            font: '32px Arial',
-            color: '#ffffff'
-        });
+    this.add
+      .text(width / 2, height / 3, "Rock Paper Scissors", {
+        fontSize: "32px",
+        color: "#ffffff",
+      })
+      .setOrigin(0.5);
 
-        startButton.setInteractive();
-        startButton.on('pointerdown', () => {
-            this.scene.start('GameScene');
-        });
-    }
+    const playButton = this.add
+      .text(width / 2, height / 2, "Start Game", {
+        fontSize: "24px",
+        color: "#00ff00",
+        backgroundColor: "#222",
+        padding: { x: 10, y: 5 },
+      })
+      .setOrigin(0.5)
+      .setInteractive();
+
+    playButton.on("pointerdown", () => {
+      this.scene.start("GameScene");
+    });
+  }
 }

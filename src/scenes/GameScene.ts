@@ -1,36 +1,39 @@
-import Phaser from "phaser";
+import { GameUI } from "../ui/GameUI";
 
-export default class GameScene extends Phaser.Scene {
-  constructor() {
-    super({ key: "GameScene" });
+export default class GameScene {
+  private rootElement: HTMLDivElement;
+
+  constructor(rootElement: HTMLDivElement) {
+    this.rootElement = rootElement;
+    this.init();
   }
 
-  create() {
-    const { width, height } = this.scale;
+  private init() {
+    const gameUI = new GameUI(this.handleChoice.bind(this));
+    this.rootElement.appendChild(gameUI.getElement());
+  }
 
-    this.add
-      .text(width / 2, height / 5, "Choose Your Move:", {
-        fontSize: "24px",
-        color: "#ffffff",
-      })
-      .setOrigin(0.5);
-
+  private handleChoice(playerChoice: string) {
     const choices = ["rock", "paper", "scissors"];
+    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
 
-    choices.forEach((choice, index) => {
-      const button = this.add
-        .text(width / 2, height / 2 + index * 50, choice.toUpperCase(), {
-          fontSize: "20px",
-          color: "#ffffff",
-          backgroundColor: "#444",
-          padding: { x: 10, y: 5 },
-        })
-        .setOrigin(0.5)
-        .setInteractive();
+    const result = this.determineWinner(playerChoice, computerChoice);
 
-      button.on("pointerdown", () => {
-        this.scene.start("UIScene", { playerChoice: choice });
-      });
-    });
+    console.log(`Player: ${playerChoice} | Computer: ${computerChoice}`);
+    console.log(`Result: ${result}`);
+  }
+
+  private determineWinner(player: string, computer: string): string {
+    if (player === computer) {
+      return "It's a tie!";
+    }
+    if (
+      (player === "rock" && computer === "scissors") ||
+      (player === "paper" && computer === "rock") ||
+      (player === "scissors" && computer === "paper")
+    ) {
+      return "You win!";
+    }
+    return "Computer wins!";
   }
 }

@@ -38,15 +38,43 @@ $background-primary: hsl(214, 47%, 23%);
 $background-secondary: hsl(237, 49%, 15%);
 $background-gradient: radial-gradient($background-primary, $background-secondary);
 
+// New colors
+$primary-gradient: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+$secondary-gradient: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+$tertiary-gradient: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
 
 // Typography
 $font-family-base: "Barlow Semi Condensed", sans-serif;
 $font-size-base: 1rem;
 $line-height-base: 1.5;
+$font-weight-regular: 600;
+$font-weight-bold: 700;
+
 
 // Spacing
 $spacing-unit: 0.25rem;
 $container-padding: $spacing-unit * 4;
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+// Border Radius
+$border-radius-sm: 8px;
+$border-radius-md: 12px;
+$border-radius-lg: 16px;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+// Z-index
+$z-index-base: 1;
+$z-index-modal: 100;
+$z-index-overlay: 99;
 
 // Breakpoints
 $breakpoints: (
@@ -62,6 +90,16 @@ $md-breakpoint: map-get($breakpoints, "md");
 $lg-breakpoint: map-get($breakpoints, "lg");
 $xl-breakpoint: map-get($breakpoints, "xl");
 $xxl-breakpoint: map-get($breakpoints, "xxl");
+
+$breakpoint-mobile: 375px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// Game specific
+$choice-size: 150px;
+$choice-size-mobile: 120px;
+$choice-border-size: 20px;
+$choice-border-size-mobile: 15px;
 
 // Transitions
 $transition-base: all 0.3s ease; 

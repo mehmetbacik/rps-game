@@ -1,13 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Rock Paper Scissors Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="game-container">
+      <header class="header">
+        <div class="header__title">
+          <h1>Rock<br>Paper<br>Scissors</h1>
+        </div>
+        <div class="header__score">
+          <div class="header__score-label">Score</div>
+          <div class="header__score-value" id="score">0</div>
+        </div>
+      </header>
+
+      <main class="game-area">
+        <img src="/src/assets/bg-pentagon.svg" alt="Pentagon" class="game-area__pentagon">
+        <!-- Game choices will be added here by Phaser -->
+      </main>
+
+      <button class="rules-button" id="rules-button">Rules</button>
+
+      <div class="modal" id="rules-modal">
+        <div class="modal__content">
+          <div class="modal__header">
+            <h2 class="modal__title">Rules</h2>
+            <button class="modal__close" id="close-modal">
+              <img src="/src/assets/icon-close.svg" alt="Close">
+            </button>
+          </div>
+          <img src="/src/assets/image-rules.svg" alt="Game Rules" class="modal__rules-image">
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

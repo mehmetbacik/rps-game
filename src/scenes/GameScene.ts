@@ -1,39 +1,49 @@
-import { GameUI } from "../ui/GameUI";
+import Phaser from "phaser";
 
-export default class GameScene {
-  private rootElement: HTMLDivElement;
+export default class GameScene extends Phaser.Scene {
+  private choices: { [key: string]: { x: number; y: number } } = {
+    rock: { x: 0.5, y: 0.8 },
+    paper: { x: 0.2, y: 0.5 },
+    scissors: { x: 0.8, y: 0.5 },
+  };
 
-  constructor(rootElement: HTMLDivElement) {
-    this.rootElement = rootElement;
-    this.init();
+  constructor() {
+    super({ key: "GameScene" });
   }
 
-  private init() {
-    const gameUI = new GameUI(this.handleChoice.bind(this));
-    this.rootElement.appendChild(gameUI.getElement());
+  create() {
+    const { width, height } = this.scale;
+
+    // Add pentagon background
+    this.add.image(width / 2, height / 2, "pentagon");
+
+    // Add choice buttons
+    Object.entries(this.choices).forEach(([choice, position]) => {
+      const button = this.add
+        .image(width * position.x, height * position.y, choice)
+        .setInteractive()
+        .setScale(0.5);
+
+      button.on("pointerdown", () => {
+        this.scene.start("UIScene", { playerChoice: choice });
+      });
+
+      // Add hover effect
+      button.on("pointerover", () => {
+        button.setScale(0.55);
+      });
+
+      button.on("pointerout", () => {
+        button.setScale(0.5);
+      });
+    });
   }
 
-  private handleChoice(playerChoice: string) {
-    const choices = ["rock", "paper", "scissors"];
-    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
-
-    const result = this.determineWinner(playerChoice, computerChoice);
-
-    console.log(`Player: ${playerChoice} | Computer: ${computerChoice}`);
-    console.log(`Result: ${result}`);
-  }
-
-  private determineWinner(player: string, computer: string): string {
-    if (player === computer) {
-      return "It's a tie!";
-    }
-    if (
-      (player === "rock" && computer === "scissors") ||
-      (player === "paper" && computer === "rock") ||
-      (player === "scissors" && computer === "paper")
-    ) {
-      return "You win!";
-    }
-    return "Computer wins!";
+  preload() {
+    // Load assets
+    this.load.image("pentagon", "/src/assets/bg-pentagon.svg");
+    this.load.image("rock", "/src/assets/icon-rock.svg");
+    this.load.image("paper", "/src/assets/icon-paper.svg");
+    this.load.image("scissors", "/src/assets/icon-scissors.svg");
   }
 }

@@ -1,6 +1,9 @@
 import Phaser from "phaser";
 
 export default class UIScene extends Phaser.Scene {
+  private resultText!: Phaser.GameObjects.Text;
+  private playAgainButton!: Phaser.GameObjects.Text;
+
   constructor() {
     super({ key: "UIScene" });
   }
@@ -10,62 +13,79 @@ export default class UIScene extends Phaser.Scene {
     const choices = ["rock", "paper", "scissors"];
     const aiChoice = Phaser.Math.RND.pick(choices);
 
-    this.add
-      .text(width / 2, height / 4, `You chose: ${data.playerChoice}`, {
-        fontSize: "20px",
-        color: "#ffffff",
-      })
-      .setOrigin(0.5);
+    // Add background
+    this.add.rectangle(0, 0, width, height, 0x000000, 0.5).setOrigin(0);
 
-    this.add
-      .text(width / 2, height / 3, `AI chose: ${aiChoice}`, {
-        fontSize: "20px",
-        color: "#ffffff",
-      })
-      .setOrigin(0.5);
+    // Add player and AI choices
+    const playerChoice = this.add
+      .image(width * 0.3, height * 0.5, data.playerChoice)
+      .setScale(0.5);
 
+    const aiChoiceImage = this.add
+      .image(width * 0.7, height * 0.5, aiChoice)
+      .setScale(0.5);
+
+    // Add result text
     const result = this.determineWinner(data.playerChoice, aiChoice);
-    this.add
-      .text(width / 2, height / 2, `Result: ${result}`, {
-        fontSize: "24px",
-        color:
-          result === "Win"
-            ? "#00ff00"
-            : result === "Lose"
-            ? "#ff0000"
-            : "#ffffff",
-      })
-      .setOrigin(0.5);
-
-    const currentScore = localStorage.getItem("score") || "0";
-    const updatedScore = this.updateScore(
-      result === "Win" ? 1 : result === "Lose" ? -1 : 0
-    );
-
-    this.add
-      .text(width / 2, height / 1.5, `Score: ${updatedScore}`, {
-        fontSize: "24px",
+    this.resultText = this.add
+      .text(width * 0.5, height * 0.3, result, {
+        fontSize: "48px",
         color: "#ffffff",
+        fontFamily: "Barlow Semi Condensed",
+        fontStyle: "bold",
       })
       .setOrigin(0.5);
+
+    // Add play again button
+    this.playAgainButton = this.add
+      .text(width * 0.5, height * 0.7, "PLAY AGAIN", {
+        fontSize: "16px",
+        color: "#3b4363",
+        fontFamily: "Barlow Semi Condensed",
+        fontStyle: "600",
+        backgroundColor: "#ffffff",
+        padding: { x: 40, y: 15 },
+      })
+      .setOrigin(0.5)
+      .setInteractive();
+
+    this.playAgainButton.on("pointerdown", () => {
+      this.scene.start("GameScene");
+    });
+
+    // Update score
+    const scoreChange = result === "YOU WIN!" ? 1 : result === "YOU LOSE!" ? -1 : 0;
+    this.updateScore(scoreChange);
+  }
+
+  preload() {
+    // Load assets
+    this.load.image("rock", "/src/assets/icon-rock.svg");
+    this.load.image("paper", "/src/assets/icon-paper.svg");
+    this.load.image("scissors", "/src/assets/icon-scissors.svg");
   }
 
   determineWinner(player: string, ai: string): string {
-    if (player === ai) return "Draw";
+    if (player === ai) return "DRAW!";
     if (
       (player === "rock" && ai === "scissors") ||
       (player === "scissors" && ai === "paper") ||
       (player === "paper" && ai === "rock")
     ) {
-      return "Win";
+      return "YOU WIN!";
     }
-    return "Lose";
+    return "YOU LOSE!";
   }
 
-  updateScore(change: number): number {
+  updateScore(change: number) {
     const currentScore = parseInt(localStorage.getItem("score") || "0", 10);
     const newScore = currentScore + change;
     localStorage.setItem("score", newScore.toString());
-    return newScore;
+    
+    // Update score display
+    const scoreElement = document.getElementById("score");
+    if (scoreElement) {
+      scoreElement.textContent = newScore.toString();
+    }
   }
 }

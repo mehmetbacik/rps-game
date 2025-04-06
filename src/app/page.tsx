@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useGame } from "../context/GameContext";
+import Result from "../components/Result";
 
 const Home = () => {
   const {
@@ -41,8 +42,8 @@ const Home = () => {
       <div className="result">
         <p>Your choice: {userChoice}</p>
         <p>Computer&apos;s choice: {computerChoice}</p>
-        <h2>{result}</h2>
       </div>
+      <Result />
     </div>
   );
 };

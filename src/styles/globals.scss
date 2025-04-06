@@ -42,7 +42,27 @@ body {
   background-color: #3700b3;
 }
 
-.result {
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
-  font-size: 24px;
+
+  .result-text {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .win {
+    color: #4caf50;
+  }
+
+  .lose {
+    color: #f44336;
+  }
+
+  .draw {
+    color: #ff9800;
+  }
 }

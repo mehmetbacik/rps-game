@@ -2,15 +2,14 @@
 
 import { motion } from "framer-motion";
 import { useGame } from "../context/GameContext";
-import Result from "../components/Result";
+import Result from "@/components/Result";
+import Scoreboard from "@/components/Scoreboard";
+import GameControls from "@/components/GameControls"; 
 
 const Home = () => {
   const {
     userChoice,
     computerChoice,
-    result,
-    userScore,
-    computerScore,
     handleUserChoice,
   } = useGame();
   const choices = ["rock", "paper", "scissors"];
@@ -18,13 +17,7 @@ const Home = () => {
   return (
     <div className="game-container">
       <h1>Rock, Paper, Scissors</h1>
-
-      <div className="scoreboard">
-        <p>
-          👤 You: {userScore} - 🤖 Computer: {computerScore}
-        </p>
-      </div>
-
+      <Scoreboard />
       <div className="choices">
         {choices.map((choice) => (
           <motion.button
@@ -38,12 +31,12 @@ const Home = () => {
           </motion.button>
         ))}
       </div>
-
       <div className="result">
         <p>Your choice: {userChoice}</p>
         <p>Computer&apos;s choice: {computerChoice}</p>
       </div>
       <Result />
+      <GameControls />
     </div>
   );
 };

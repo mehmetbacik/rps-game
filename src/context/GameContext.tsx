@@ -1,75 +1,66 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface GameContextType {
-  userChoice: string;
-  computerChoice: string;
-  result: string;
   userScore: number;
   computerScore: number;
+  userChoice: string | null;
+  computerChoice: string | null;
+  result: string | null;
   handleUserChoice: (choice: string) => void;
+  resetGame: () => void;
 }
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
-export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [userChoice, setUserChoice] = useState<string>("");
-  const [computerChoice, setComputerChoice] = useState<string>("");
-  const [result, setResult] = useState<string>("");
-  const [userScore, setUserScore] = useState<number>(0);
-  const [computerScore, setComputerScore] = useState<number>(0);
-
-  const choices = ["rock", "paper", "scissors"];
-
-  useEffect(() => {
-    const storedUserScore = localStorage.getItem("userScore");
-    const storedComputerScore = localStorage.getItem("computerScore");
-    if (storedUserScore && storedComputerScore) {
-      setUserScore(Number(storedUserScore));
-      setComputerScore(Number(storedComputerScore));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("userScore", userScore.toString());
-    localStorage.setItem("computerScore", computerScore.toString());
-  }, [userScore, computerScore]);
+export const GameProvider = ({ children }: { children: React.ReactNode }) => {
+  const [userScore, setUserScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
+  const [userChoice, setUserChoice] = useState<string | null>(null);
+  const [computerChoice, setComputerChoice] = useState<string | null>(null);
+  const [result, setResult] = useState<string | null>(null);
 
   const handleUserChoice = (choice: string) => {
-    setUserChoice(choice);
-    const randomChoice = choices[Math.floor(Math.random() * 3)];
-    setComputerChoice(randomChoice);
-    determineWinner(choice, randomChoice);
-  };
+    const choices = ["rock", "paper", "scissors"];
+    const randomChoice = choices[Math.floor(Math.random() * choices.length)];
 
-  const determineWinner = (user: string, computer: string) => {
-    if (user === computer) {
-      setResult("It's a draw!");
+    setUserChoice(choice);
+    setComputerChoice(randomChoice);
+
+    if (choice === randomChoice) {
+      setResult("It's a tie! 🤝");
     } else if (
-      (user === "rock" && computer === "scissors") ||
-      (user === "paper" && computer === "rock") ||
-      (user === "scissors" && computer === "paper")
+      (choice === "rock" && randomChoice === "scissors") ||
+      (choice === "paper" && randomChoice === "rock") ||
+      (choice === "scissors" && randomChoice === "paper")
     ) {
-      setResult("You win!");
+      setResult("You win! 🎉");
       setUserScore((prev) => prev + 1);
     } else {
-      setResult("You lose!");
+      setResult("You lose! 😢");
       setComputerScore((prev) => prev + 1);
     }
+  };
+
+  const resetGame = () => {
+    setUserScore(0);
+    setComputerScore(0);
+    setUserChoice(null);
+    setComputerChoice(null);
+    setResult(null);
   };
 
   return (
     <GameContext.Provider
       value={{
+        userScore,
+        computerScore,
         userChoice,
         computerChoice,
         result,
-        userScore,
-        computerScore,
         handleUserChoice,
+        resetGame,
       }}
     >
       {children}
@@ -77,8 +68,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export const useGame = (): GameContextType => {
+export const useGame = () => {
   const context = useContext(GameContext);
-  if (!context) throw new Error("useGame must be used within a GameProvider");
+  if (!context) {
+    throw new Error("useGame must be used within a GameProvider");
+  }
   return context;
 };

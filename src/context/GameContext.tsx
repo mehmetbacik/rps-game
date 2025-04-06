@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface GameContextType {
   userChoice: string;
@@ -23,6 +23,20 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
   const [computerScore, setComputerScore] = useState<number>(0);
 
   const choices = ["rock", "paper", "scissors"];
+
+  useEffect(() => {
+    const storedUserScore = localStorage.getItem("userScore");
+    const storedComputerScore = localStorage.getItem("computerScore");
+    if (storedUserScore && storedComputerScore) {
+      setUserScore(Number(storedUserScore));
+      setComputerScore(Number(storedComputerScore));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("userScore", userScore.toString());
+    localStorage.setItem("computerScore", computerScore.toString());
+  }, [userScore, computerScore]);
 
   const handleUserChoice = (choice: string) => {
     setUserChoice(choice);

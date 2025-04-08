@@ -1,0 +1,62 @@
+// Colors
+// Scissors Colors
+$scissors-primary: hsl(39, 89%, 49%);
+$scissors-secondary: hsl(40, 84%, 53%);
+$scissors-gradient: linear-gradient($scissors-primary, $scissors-secondary);
+
+// Paper Colors
+$paper-primary: hsl(230, 89%, 62%);
+$paper-secondary: hsl(230, 89%, 65%);
+$paper-gradient: linear-gradient($paper-primary, $paper-secondary);
+
+// Rock Colors
+$rock-primary: hsl(349, 71%, 52%);
+$rock-secondary: hsl(349, 70%, 56%);
+$rock-gradient: linear-gradient($rock-primary, $rock-secondary);
+
+// Lizard Colors
+$lizard-primary: hsl(261, 73%, 60%);
+$lizard-secondary: hsl(261, 72%, 63%);
+$lizard-gradient: linear-gradient($lizard-primary, $lizard-secondary);
+
+// Spock Colors
+$spock-primary: hsl(189, 59%, 53%);
+$spock-secondary: hsl(189, 58%, 57%);
+$spock-gradient: linear-gradient($spock-primary, $spock-secondary);
+
+// Neutral Colors
+$dark-text: hsl(229, 25%, 31%);
+$score-text: hsl(229, 64%, 46%);
+$header-outline: hsl(217, 16%, 45%);
+
+// Background Colors
+$background-primary: hsl(214, 47%, 23%);
+$background-secondary: hsl(237, 49%, 15%);
+$background-gradient: radial-gradient($background-primary, $background-secondary);
+
+// Typography
+$font-family-base: "Barlow Semi Condensed", sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+// Spacing
+$spacing-unit: 0.25rem;
+$container-padding: $spacing-unit * 4;
+
+// Breakpoints
+$breakpoints: (
+  "sm": 576px,
+  "md": 768px,
+  "lg": 992px,
+  "xl": 1200px,
+  "xxl": 1400px,
+);
+
+$sm-breakpoint: map-get($breakpoints, "sm");
+$md-breakpoint: map-get($breakpoints, "md");
+$lg-breakpoint: map-get($breakpoints, "lg");
+$xl-breakpoint: map-get($breakpoints, "xl");
+$xxl-breakpoint: map-get($breakpoints, "xxl");
+
+// Transitions
+$transition-base: all 0.3s ease; 

@@ -1,0 +1,24 @@
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  .result-text {
+    font-size: $font-size-base;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .win {
+    color: #4caf50;
+  }
+
+  .lose {
+    color: #f44336;
+  }
+
+  .draw {
+    color: #ff9800;
+  }
+}

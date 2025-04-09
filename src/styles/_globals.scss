@@ -5,59 +5,61 @@
 }
 
 body {
-  font-family: $font-family-base;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f8f8f8;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  background: $gradient-primary;
+  min-height: 100vh;
+  color: $white;
 }
 
-.game-container {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-md;
+}
+
+// Utility Classes
+.text-center {
   text-align: center;
 }
 
-.choices {
-  margin: 20px 0;
+.flex {
+  display: flex;
 }
 
-.choice-btn {
-  padding: 10px 20px;
-  margin: 0 10px;
-  font-size: 18px;
-  border: none;
-  background-color: #6200ea;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s ease-in-out;
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.choice-btn:hover {
-  background-color: #3700b3;
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.scoreboard {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
-.game-controls {
-  margin-top: 20px;
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.reset-btn {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+.fade-in {
+  animation: fadeIn $transition-normal;
 }
 
-.reset-btn:hover {
-  background-color: #cc0000;
+// Responsive
+@media (max-width: 768px) {
+  .container {
+    padding: $spacing-sm;
+  }
 }

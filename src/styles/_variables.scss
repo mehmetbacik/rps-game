@@ -1,4 +1,52 @@
 // Colors
+$primary: #2a45c2;
+$secondary: #3b4262;
+$dark: #565468;
+$light: #f3f3f3;
+$white: #ffffff;
+$black: #000000;
+
+// Gradients
+$gradient-primary: linear-gradient(to bottom, #1f3756, #141539);
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+// Border Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 16px;
+$radius-full: 9999px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Font Sizes
+$text-xs: 12px;
+$text-sm: 14px;
+$text-md: 16px;
+$text-lg: 20px;
+$text-xl: 24px;
+$text-2xl: 32px;
+$text-3xl: 48px;
+
+// Font Weights
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 700;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
 // Scissors Colors
 $scissors-primary: hsl(39, 89%, 49%);
 $scissors-secondary: hsl(40, 84%, 53%);

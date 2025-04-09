@@ -1,68 +1,68 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
-
-interface GameContextType {
-  userScore: number;
-  computerScore: number;
-  userChoice: string | null;
-  computerChoice: string | null;
-  result: string | null;
-  handleUserChoice: (choice: string) => void;
-  resetGame: () => void;
-}
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { GameContextType, GameState, Choice } from '../types/types';
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
-export const GameProvider = ({ children }: { children: React.ReactNode }) => {
-  const [userScore, setUserScore] = useState(0);
-  const [computerScore, setComputerScore] = useState(0);
-  const [userChoice, setUserChoice] = useState<string | null>(null);
-  const [computerChoice, setComputerChoice] = useState<string | null>(null);
-  const [result, setResult] = useState<string | null>(null);
+const getRandomChoice = (): Choice => {
+  const choices: Choice[] = ['rock', 'paper', 'scissors'];
+  return choices[Math.floor(Math.random() * choices.length)];
+};
 
-  const handleUserChoice = (choice: string) => {
-    const choices = ["rock", "paper", "scissors"];
-    const randomChoice = choices[Math.floor(Math.random() * choices.length)];
+const getResult = (player: Choice, computer: Choice): 'win' | 'lose' | 'draw' => {
+  if (player === computer) return 'draw';
+  
+  if (
+    (player === 'rock' && computer === 'scissors') ||
+    (player === 'paper' && computer === 'rock') ||
+    (player === 'scissors' && computer === 'paper')
+  ) {
+    return 'win';
+  }
+  
+  return 'lose';
+};
 
-    setUserChoice(choice);
-    setComputerChoice(randomChoice);
+export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [state, setState] = useState<GameState>(() => {
+    const savedScore = localStorage.getItem('rps-score');
+    return {
+      score: savedScore ? parseInt(savedScore) : 0,
+      playerChoice: null,
+      computerChoice: null,
+      result: null,
+    };
+  });
 
-    if (choice === randomChoice) {
-      setResult("It's a tie! 🤝");
-    } else if (
-      (choice === "rock" && randomChoice === "scissors") ||
-      (choice === "paper" && randomChoice === "rock") ||
-      (choice === "scissors" && randomChoice === "paper")
-    ) {
-      setResult("You win! 🎉");
-      setUserScore((prev) => prev + 1);
-    } else {
-      setResult("You lose! 😢");
-      setComputerScore((prev) => prev + 1);
-    }
+  useEffect(() => {
+    localStorage.setItem('rps-score', state.score.toString());
+  }, [state.score]);
+
+  const setPlayerChoice = (choice: Choice) => {
+    const computerChoice = getRandomChoice();
+    const result = getResult(choice, computerChoice);
+    
+    setState(prev => ({
+      ...prev,
+      playerChoice: choice,
+      computerChoice,
+      result,
+      score: result === 'win' ? prev.score + 1 : result === 'lose' ? Math.max(0, prev.score - 1) : prev.score,
+    }));
   };
 
   const resetGame = () => {
-    setUserScore(0);
-    setComputerScore(0);
-    setUserChoice(null);
-    setComputerChoice(null);
-    setResult(null);
+    setState(prev => ({
+      ...prev,
+      playerChoice: null,
+      computerChoice: null,
+      result: null,
+    }));
   };
 
   return (
-    <GameContext.Provider
-      value={{
-        userScore,
-        computerScore,
-        userChoice,
-        computerChoice,
-        result,
-        handleUserChoice,
-        resetGame,
-      }}
-    >
+    <GameContext.Provider value={{ state, setPlayerChoice, resetGame }}>
       {children}
     </GameContext.Provider>
   );
@@ -70,8 +70,8 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
 
 export const useGame = () => {
   const context = useContext(GameContext);
-  if (!context) {
-    throw new Error("useGame must be used within a GameProvider");
+  if (context === undefined) {
+    throw new Error('useGame must be used within a GameProvider');
   }
   return context;
 };

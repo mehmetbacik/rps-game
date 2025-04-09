@@ -1,0 +1,74 @@
+@import '../variables';
+
+.rules-button {
+  position: fixed;
+  bottom: $spacing-xl;
+  right: $spacing-xl;
+  background: transparent;
+  border: 2px solid $header-outline;
+  color: $white;
+  padding: $spacing-sm $spacing-xl;
+  border-radius: $radius-sm;
+  font-size: $text-md;
+  font-weight: $font-bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all $transition-normal;
+
+  &:hover {
+    background: rgba($white, 0.1);
+  }
+}
+
+.rules-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba($black, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.rules-content {
+  background: $white;
+  padding: $spacing-xl;
+  border-radius: $radius-md;
+  max-width: 400px;
+  width: 100%;
+}
+
+.rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+
+  h2 {
+    color: $dark-text;
+    font-size: $text-xl;
+    text-transform: uppercase;
+  }
+
+  .close-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-xs;
+  }
+}
+
+@media (max-width: 768px) {
+  .rules-button {
+    bottom: $spacing-lg;
+    right: $spacing-lg;
+  }
+
+  .rules-content {
+    padding: $spacing-lg;
+  }
+} 

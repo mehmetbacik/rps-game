@@ -1,10 +1,12 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from "react";
+import { useGame } from "../context/GameContext";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Rules = () => {
+  const { state } = useGame();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -42,7 +44,11 @@ const Rules = () => {
                 </button>
               </div>
               <Image
-                src="/images/image-rules.svg"
+                src={
+                  state.gameMode === "classic"
+                    ? "/images/image-rules.svg"
+                    : "/images/image-rules-bonus.svg"
+                }
                 alt="Game Rules"
                 width={304}
                 height={270}
@@ -55,4 +61,4 @@ const Rules = () => {
   );
 };
 
-export default Rules; 
+export default Rules;

@@ -4,33 +4,74 @@
   position: fixed;
   bottom: $spacing-xl;
   left: $spacing-xl;
-  display: flex;
-  gap: $spacing-sm;
-  background: rgba($white, 0.1);
-  padding: $spacing-xs;
-  border-radius: $radius-md;
-  border: 2px solid $header-outline;
+  z-index: 100;
 
-  .mode-button {
-    padding: $spacing-sm $spacing-md;
-    border: none;
-    border-radius: $radius-sm;
-    background: transparent;
-    color: $white;
-    font-size: $text-sm;
-    font-weight: $font-bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all $transition-normal;
+  .toggle-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba($white, 0.1);
+    padding: $spacing-xs;
+    border-radius: $radius-md;
+    border: 2px solid $header-outline;
 
-    &:hover {
-      background: rgba($white, 0.1);
+    input[type="checkbox"] {
+      display: none;
+
+      &:checked + label {
+        .mode-label.classic {
+          opacity: 0.5;
+        }
+        .mode-label.advanced {
+          opacity: 1;
+        }
+        &::before {
+          transform: translateX(100%);
+        }
+      }
     }
 
-    &.active {
-      background: $white;
-      color: $dark;
+    label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $radius-sm;
+      background: transparent;
+      transition: all $transition-normal;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: $white;
+        border-radius: $radius-sm;
+        transition: transform $transition-normal;
+      }
+
+      .mode-label {
+        position: relative;
+        z-index: 1;
+        color: $white;
+        font-size: $text-sm;
+        font-weight: $font-bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: $spacing-xs $spacing-sm;
+        transition: opacity $transition-normal;
+
+        &.classic {
+          opacity: 1;
+        }
+
+        &.advanced {
+          opacity: 0.5;
+        }
+      }
     }
   }
 }

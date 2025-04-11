@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 interface ChoiceButtonProps {
-  type: 'rock' | 'paper' | 'scissors';
-  position: 'top' | 'right' | 'bottom' | 'center';
+  type: 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
+  position: 'top' | 'right' | 'bottom' | 'left' | 'top-right' | 'center';
   onClick: () => void;
 }
 

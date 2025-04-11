@@ -25,6 +25,20 @@
     margin-top: $spacing-xl;
   }
 
+  &.left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.top-right {
+    position: absolute;
+    right: 25%;
+    top: 0;
+    transform: translateY(-50%);
+  }
+
   &.center {
     margin: 0;
   }
@@ -58,6 +72,16 @@
     background: linear-gradient(to bottom, #ec9e0e, #eca922);
     box-shadow: 0 5px 0 #c76c1b;
   }
+
+  &.lizard {
+    background: linear-gradient(to bottom, #834fe3, #8c5de5);
+    box-shadow: 0 5px 0 #5f37a8;
+  }
+
+  &.spock {
+    background: linear-gradient(to bottom, #40b9ce, #52bed1);
+    box-shadow: 0 5px 0 #2d8dab;
+  }
 }
 
 @media (max-width: 768px) {
@@ -76,6 +100,10 @@
 
     &.bottom {
       margin-top: $spacing-lg;
+    }
+
+    &.top-right {
+      right: 15%;
     }
   }
 } 

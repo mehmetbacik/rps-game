@@ -1,0 +1,43 @@
+@import '../variables';
+
+.game-mode-toggle {
+  position: fixed;
+  bottom: $spacing-xl;
+  left: $spacing-xl;
+  display: flex;
+  gap: $spacing-sm;
+  background: rgba($white, 0.1);
+  padding: $spacing-xs;
+  border-radius: $radius-md;
+  border: 2px solid $header-outline;
+
+  .mode-button {
+    padding: $spacing-sm $spacing-md;
+    border: none;
+    border-radius: $radius-sm;
+    background: transparent;
+    color: $white;
+    font-size: $text-sm;
+    font-weight: $font-bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all $transition-normal;
+
+    &:hover {
+      background: rgba($white, 0.1);
+    }
+
+    &.active {
+      background: $white;
+      color: $dark;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .game-mode-toggle {
+    bottom: $spacing-lg;
+    left: $spacing-lg;
+  }
+} 

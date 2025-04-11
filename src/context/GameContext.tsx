@@ -14,7 +14,7 @@ const getRandomChoice = (gameMode: GameMode): Choice => {
 
 const getResult = (player: Choice, computer: Choice): "win" | "lose" | "draw" => {
   if (player === computer) return "draw";
-  
+
   const winConditions = {
     rock: ["scissors", "lizard"],
     paper: ["rock", "spock"],
@@ -27,30 +27,38 @@ const getResult = (player: Choice, computer: Choice): "win" | "lose" | "draw" =>
   return winConditions[player]?.includes(computer) ? "win" : "lose";
 };
 
-export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [state, setState] = useState<GameState>(() => {
-    const savedScore = localStorage.getItem("rps-score");
-    const savedMode = localStorage.getItem("rps-mode") as GameMode;
-    return {
-      score: savedScore ? parseInt(savedScore) : 0,
-      playerChoice: null,
-      computerChoice: null,
-      result: null,
-      gameMode: savedMode || "classic"
-    };
+export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [state, setState] = useState<GameState>({
+    score: 0,
+    playerChoice: null,
+    computerChoice: null,
+    result: null,
+    gameMode: "classic",
   });
 
   useEffect(() => {
-    localStorage.setItem("rps-score", state.score.toString());
-    localStorage.setItem("rps-mode", state.gameMode);
+    if (typeof window !== "undefined") {
+      const savedScore = localStorage.getItem("rps-score");
+      const savedMode = localStorage.getItem("rps-mode") as GameMode;
+      setState(prev => ({
+        ...prev,
+        score: savedScore ? parseInt(savedScore) : 0,
+        gameMode: savedMode || "classic",
+      }));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("rps-score", state.score.toString());
+      localStorage.setItem("rps-mode", state.gameMode);
+    }
   }, [state.score, state.gameMode]);
 
   const setPlayerChoice = (choice: Choice) => {
     const computerChoice = getRandomChoice(state.gameMode);
     const result = getResult(choice, computerChoice);
-    
+
     setState(prev => ({
       ...prev,
       playerChoice: choice,
@@ -72,7 +80,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({
   const toggleGameMode = () => {
     setState(prev => {
       const newMode = prev.gameMode === "classic" ? "advanced" : "classic";
-      console.log("Toggling game mode from", prev.gameMode, "to", newMode);
       return {
         ...prev,
         gameMode: newMode,

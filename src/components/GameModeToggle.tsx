@@ -1,42 +1,28 @@
 'use client';
 
-import { useGame } from '@/context/GameContext';
-import { motion } from 'framer-motion';
+import React from 'react';
+import { useGame } from '../context/GameContext';
+import '../styles/components/_game-mode-toggle.scss';
 
-const GameModeToggle = () => {
+const GameModeToggle: React.FC = () => {
   const { state, toggleGameMode } = useGame();
 
   return (
     <div className="game-mode-toggle">
-      <motion.span
-        className={state.gameMode === 'classic' ? 'active' : ''}
-        animate={{ opacity: state.gameMode === 'classic' ? 1 : 0.5 }}
-        transition={{ duration: 0.3 }}
-      >
-        CLASSIC
-      </motion.span>
-      <motion.button
-        className={`toggle ${state.gameMode}`}
-        onClick={toggleGameMode}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <motion.div
-          className="toggle-handle"
-          animate={{
-            x: state.gameMode === 'classic' ? 0 : 24,
-          }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      <div className="toggle-container">
+        <input
+          type="checkbox"
+          id="game-mode-switch"
+          checked={state.gameMode === 'advanced'}
+          onChange={toggleGameMode}
         />
-      </motion.button>
-      <motion.span
-        className={state.gameMode === 'advanced' ? 'active' : ''}
-        animate={{ opacity: state.gameMode === 'advanced' ? 1 : 0.5 }}
-        transition={{ duration: 0.3 }}
-      >
-        ADVANCED
-      </motion.span>
+        <label htmlFor="game-mode-switch">
+          <span className="mode-label classic">CLASSIC</span>
+          <span className="mode-label advanced">ADVANCED</span>
+        </label>
+      </div>
     </div>
+    
   );
 };
 

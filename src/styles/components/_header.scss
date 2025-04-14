@@ -4,54 +4,58 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: $spacing-md;
-  border: 3px solid rgba($white, 0.1);
-  border-radius: $radius-md;
-  background: rgba($white, 0.05);
-
+  margin: $spacing-unit * 8 $spacing-unit * 12;
+  padding: $spacing-unit * 6;
+  border: 3px solid $header-outline;
+  border-radius: $radius-lg;
   .logo {
     img {
-      height: auto;
+      height: 120px;
+      object-fit: contain;
+      margin: 0 auto;
     }
   }
-
   .score-board {
     background: $white;
-    padding: $spacing-sm $spacing-xl;
-    border-radius: $radius-sm;
+    padding: $spacing-unit * 3.5 $spacing-unit * 10;
+    border-radius: $radius-md;
     text-align: center;
-
     .score-label {
-      color: $primary;
-      font-size: $text-sm;
+      color: $score-text;
+      font-size: $font-size-base * 1.2;
       font-weight: $font-bold;
-      letter-spacing: 2px;
+      text-transform: uppercase;
     }
-
     .score-value {
-      color: $dark;
-      font-size: $text-3xl;
+      color: $dark-text;
+      font-size: $font-size-base * 3.5;
       line-height: 1;
     }
   }
 }
-
-@media (max-width: 768px) {
-  .score-board {
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: $md-breakpoint) {
+  .header {
+    margin: $spacing-unit * 2 $spacing-unit * 4;
+    padding: $spacing-unit * 4;
+    border-radius: $radius-md;
     .logo {
       img {
-        width: 100px;
+        width: 80px;
+        height: 70px;
       }
     }
-
     .score-board {
-      padding: $spacing-xs $spacing-lg;
-
+      background: $white;
+      padding: $spacing-unit * 1 $spacing-unit * 5;
+      border-radius: $radius-sm;
+      .score-label {
+        font-size: $font-size-base * 0.75;
+      }
       .score-value {
-        font-size: $text-2xl;
+        font-size: $font-size-base * 2;
       }
     }
   }
 } 
+/* ---------- RESPONSIVE DESIGN ---------- */

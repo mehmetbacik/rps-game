@@ -1,80 +1,110 @@
 @import '../variables';
-
-.choice-button {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  z-index: 1;
-  transition: transform $transition-normal;
-  &.bottom {
-    position: absolute;
-    bottom: 10%;
+.choice-buttons {
+  &.triangle-wrapper {
+    .choice-button {
+      &.rock-position {
+        position: absolute;
+        bottom: 10%;
+      }
+      &.paper-position {
+        position: absolute;
+        left: 10%;
+        top: 0;
+      }
+      &.scissors-position {
+        position: absolute;
+        right: 10%;
+        top: 0;
+      }
+    }
   }
-  &.top-left {
-    position: absolute;
-    left: 10%;
-    top: 0;
+  &.pentagon-wrapper {
+    .choice-button {
+      &.scissors-position {
+        position: absolute;
+        top: -10%;
+      }
+      &.paper-position {
+        position: absolute;
+        right: 0;
+        top: 20%;
+      }
+      &.spock-position {
+        position: absolute;
+        left: 0;
+        top: 20%;
+      }
+      &.rock-position {
+        position: absolute;
+        bottom: -5%;
+        right: 10%;
+      }
+      &.lizard-position {
+        position: absolute;
+        bottom: -5%;
+        left: 10%;
+      }
+    }
   }
-  &.top-right {
-    position: absolute;
-    right: 10%;
-    top: 0;
-  }
-  .inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-    background: $white;
+  .choice-button {
+    position: relative;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 5px 0 rgba($black, 0.2);
-  }
-  &.rock {
-    background: $rock-gradient;
-    box-shadow: 0 5px 0 #9f1631;
-  }
-  &.paper {
-    background: $paper-gradient;
-    box-shadow: 0 5px 0 #2945c3;
-  }
-  &.scissors {
-    background: $scissors-gradient;
-    box-shadow: 0 5px 0 #c76c1b;
-  }
-  &.lizard {
-    background: $lizard-gradient;
-    box-shadow: 0 5px 0 #5f37a8;
-  }
-  &.spock {
-    background: $spock-gradient;
-    box-shadow: 0 5px 0 #2d8dab;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform $transition-normal;
+    .inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px;
+      height: 110px;
+      background: $white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 5px 0 rgba($black, 0.2);
+    }
+    &.rock {
+      background: $rock-gradient;
+      box-shadow: 0 5px 0 #9f1631;
+    }
+    &.paper {
+      background: $paper-gradient;
+      box-shadow: 0 5px 0 #2945c3;
+    }
+    &.scissors {
+      background: $scissors-gradient;
+      box-shadow: 0 5px 0 #c76c1b;
+    }
+    &.lizard {
+      background: $lizard-gradient;
+      box-shadow: 0 5px 0 #5f37a8;
+    }
+    &.spock {
+      background: $spock-gradient;
+      box-shadow: 0 5px 0 #2d8dab;
+    }
   }
 }
 /* ---------- RESPONSIVE DESIGN ---------- */
 @media screen and (max-width: $md-breakpoint) {
-  .choice-button {
-    width: 100px;
-    height: 100px;
-    .inner {
-      width: 80px;
-      height: 80px;
-    }
-    &.top {
-      margin-bottom: $spacing-lg;
-    }
-    &.bottom {
-      margin-top: $spacing-lg;
-    }
-    &.top-right {
-      right: 15%;
+  .choice-buttons {
+    .choice-button {
+      width: 100px;
+      height: 100px;
+      .inner {
+        width: 80px;
+        height: 80px;
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
     }
   }
 } 

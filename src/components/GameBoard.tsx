@@ -31,36 +31,36 @@ const GameBoard = () => {
               />
             </div>
             <motion.div
-              className="choice-buttons"
+              className={`${state.gameMode === 'classic' ? 'triangle-wrapper' : 'pentagon-wrapper'} choice-buttons`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
               <ChoiceButton
                 type="paper"
-                position="top-left"
+                position="paper-position"
                 onClick={() => setPlayerChoice('paper')}
               />
               <ChoiceButton
                 type="scissors"
-                position="top-right"
+                position="scissors-position"
                 onClick={() => setPlayerChoice('scissors')}
               />
               <ChoiceButton
                 type="rock"
-                position="bottom"
+                position="rock-position"
                 onClick={() => setPlayerChoice('rock')}
               />
               {state.gameMode === 'advanced' && (
                 <>
                   <ChoiceButton
                     type="lizard"
-                    position="left"
+                    position="lizard-position"
                     onClick={() => setPlayerChoice('lizard')}
                   />
                   <ChoiceButton
                     type="spock"
-                    position="top-right"
+                    position="spock-position"
                     onClick={() => setPlayerChoice('spock')}
                   />
                 </>

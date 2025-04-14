@@ -36,7 +36,7 @@ const Header: React.FC = () => {
       </AnimatePresence>
       <div className="score-board">
         <span className="score-label">Score</span>
-        <span className="score-value">{state.score}</span>
+        <h2 className="score-value">{state.score}</h2>
       </div>
     </header>
   );

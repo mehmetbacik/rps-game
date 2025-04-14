@@ -2,7 +2,7 @@
 
 import { GameProvider } from '@/context/GameContext';
 import GameBoard from '@/components/GameBoard';
-import ScoreBoard from '@/components/Scoreboard';
+import Header from '@/components/Header';
 import Rules from '@/components/Rules';
 import GameModeToggle from '@/components/GameModeToggle';
 import '@/styles/main.scss';
@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <GameProvider>
       <main className="container">
-        <ScoreBoard />
+        <Header />
         <GameBoard />
         <Rules />
         <GameModeToggle />

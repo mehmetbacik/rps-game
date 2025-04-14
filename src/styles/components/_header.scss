@@ -1,6 +1,6 @@
 @import '../variables';
 
-.score-board {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,20 +17,20 @@
     }
   }
 
-  .score {
+  .score-board {
     background: $white;
     padding: $spacing-sm $spacing-xl;
     border-radius: $radius-sm;
     text-align: center;
 
-    span {
+    .score-label {
       color: $primary;
       font-size: $text-sm;
       font-weight: $font-bold;
       letter-spacing: 2px;
     }
 
-    h2 {
+    .score-value {
       color: $dark;
       font-size: $text-3xl;
       line-height: 1;
@@ -46,10 +46,10 @@
       }
     }
 
-    .score {
+    .score-board {
       padding: $spacing-xs $spacing-lg;
 
-      h2 {
+      .score-value {
         font-size: $text-2xl;
       }
     }

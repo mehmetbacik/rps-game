@@ -5,7 +5,6 @@
   max-width: 500px;
   margin: $spacing-xl auto;
   min-height: 400px;
-
   .choices {
     position: relative;
     width: 100%;
@@ -14,34 +13,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     .triangle, .pentagon {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
       z-index: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
       }
     }
-
-    .triangle {
-      width: 313px;
-      height: 278px;
-    }
-
-    .pentagon {
-      width: 400px;
-      height: 400px;
-    }
-
     .choice-buttons {
       position: relative;
       z-index: 1;
@@ -54,20 +34,19 @@
     }
   }
 }
-
-@media (max-width: 768px) {
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: $md-breakpoint) {
   .game-board {
     min-height: 300px;
     margin: $spacing-lg auto;
-
     .triangle {
       width: 200px;
       height: 178px;
     }
-
     .pentagon {
       width: 250px;
       height: 250px;
     }
   }
 } 
+/* ---------- RESPONSIVE DESIGN ---------- */

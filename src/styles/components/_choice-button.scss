@@ -2,108 +2,80 @@
 
 .choice-button {
   position: relative;
-  width: 130px;
-  height: 130px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
   z-index: 1;
   transition: transform $transition-normal;
-
-  &.top {
-    margin-bottom: $spacing-xl;
-  }
-
-  &.right {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
   &.bottom {
-    margin-top: $spacing-xl;
-  }
-
-  &.left {
     position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 10%;
   }
-
+  &.top-left {
+    position: absolute;
+    left: 10%;
+    top: 0;
+  }
   &.top-right {
     position: absolute;
-    right: 25%;
+    right: 10%;
     top: 0;
-    transform: translateY(-50%);
   }
-
-  &.center {
-    margin: 0;
-  }
-
   .inner {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background: $white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 5px 0 rgba($black, 0.1);
+    box-shadow: inset 0 5px 0 rgba($black, 0.2);
   }
-
   &.rock {
-    background: linear-gradient(to bottom, #dc2e4e, #dd405d);
+    background: $rock-gradient;
     box-shadow: 0 5px 0 #9f1631;
   }
-
   &.paper {
-    background: linear-gradient(to bottom, #4865f4, #5671f5);
+    background: $paper-gradient;
     box-shadow: 0 5px 0 #2945c3;
   }
-
   &.scissors {
-    background: linear-gradient(to bottom, #ec9e0e, #eca922);
+    background: $scissors-gradient;
     box-shadow: 0 5px 0 #c76c1b;
   }
-
   &.lizard {
-    background: linear-gradient(to bottom, #834fe3, #8c5de5);
+    background: $lizard-gradient;
     box-shadow: 0 5px 0 #5f37a8;
   }
-
   &.spock {
-    background: linear-gradient(to bottom, #40b9ce, #52bed1);
+    background: $spock-gradient;
     box-shadow: 0 5px 0 #2d8dab;
   }
 }
-
-@media (max-width: 768px) {
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: $md-breakpoint) {
   .choice-button {
     width: 100px;
     height: 100px;
-
     .inner {
       width: 80px;
       height: 80px;
     }
-
     &.top {
       margin-bottom: $spacing-lg;
     }
-
     &.bottom {
       margin-top: $spacing-lg;
     }
-
     &.top-right {
       right: 15%;
     }
   }
 } 
+/* ---------- RESPONSIVE DESIGN ---------- */

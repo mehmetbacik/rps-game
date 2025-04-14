@@ -38,12 +38,12 @@ const GameBoard = () => {
             >
               <ChoiceButton
                 type="paper"
-                position="top"
+                position="top-left"
                 onClick={() => setPlayerChoice('paper')}
               />
               <ChoiceButton
                 type="scissors"
-                position="right"
+                position="top-right"
                 onClick={() => setPlayerChoice('scissors')}
               />
               <ChoiceButton

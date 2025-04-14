@@ -3,7 +3,7 @@
 .game-board {
   position: relative;
   max-width: 500px;
-  margin: $spacing-xl auto;
+  margin: $spacing-unit * 20 auto;
   min-height: 400px;
   .choices {
     position: relative;
@@ -31,6 +31,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 400px;
     }
   }
 }

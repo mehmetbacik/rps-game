@@ -108,6 +108,46 @@
     }
   }
 }
+@media screen and (max-width: $xs-breakpoint) {
+  .choice-buttons {
+    &.triangle-wrapper {
+      .choice-button {
+        &.rock-position {
+          bottom: 20px;
+        }
+        &.paper-position {
+          left: 50px;
+        }
+        &.scissors-position {
+          right: 50px;
+        }
+      }
+    }
+    &.pentagon-wrapper {
+      .choice-button {
+        &.scissors-position {
+          top: -20px;
+        }
+        &.paper-position {
+          right: 25px;
+          top: 60px;
+        }
+        &.spock-position {
+          left: 25px;
+          top: 60px;
+        }
+        &.rock-position {
+          bottom: -15px;
+          right: 55px;
+        }
+        &.lizard-position {
+          bottom: -15px;
+          left: 55px;
+        }
+      }
+    }
+  }
+}  
 @media screen and (max-width: $xxs-breakpoint) {
   .choice-buttons {
     &.triangle-wrapper {
@@ -116,7 +156,7 @@
           bottom: 20px;
         }
         &.paper-position {
-          left:25px;
+          left: 25px;
         }
         &.scissors-position {
           right: 25px;
@@ -137,12 +177,10 @@
           top: 60px;
         }
         &.rock-position {
-          position: absolute;
           bottom: -15px;
           right: 40px;
         }
         &.lizard-position {
-          position: absolute;
           bottom: -15px;
           left: 40px;
         }

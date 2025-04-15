@@ -46,8 +46,19 @@
       }
     }
   }
-} 
-
+}
+@media screen and (max-width: $xs-breakpoint) {
+  .game-board {
+    .triangle {
+      width: 222px;
+      height: 200px;
+    }
+    .pentagon {
+      width: 250px;
+      height: 250px;
+    }
+  }
+}  
 @media screen and (max-width: $xxs-breakpoint) {
   .game-board {
     .triangle {

@@ -40,6 +40,16 @@
   .game-board {
     min-height: 300px;
     margin: $spacing-unit * 20 auto;
+    .choices {
+      .choice-buttons {
+        min-height: 270px;
+      }
+    }
+  }
+} 
+
+@media screen and (max-width: $xxs-breakpoint) {
+  .game-board {
     .triangle {
       width: 200px;
       height: 178px;
@@ -47,11 +57,6 @@
     .pentagon {
       width: 250px;
       height: 250px;
-    }
-    .choices {
-      .choice-buttons {
-        min-height: 270px;
-      }
     }
   }
 } 

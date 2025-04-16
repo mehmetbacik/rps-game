@@ -92,7 +92,7 @@
   }
 }
 /* ---------- RESPONSIVE DESIGN ---------- */
-@media screen and (max-width: $md-breakpoint) {
+@media screen and (max-width: $sm-breakpoint) {
   .choice-buttons {
     .choice-button {
       width: 100px;
@@ -106,10 +106,6 @@
         }
       }
     }
-  }
-}
-@media screen and (max-width: $sm-breakpoint) {
-  .choice-buttons {
     &.triangle-wrapper {
       .choice-button {
         &.rock-position {

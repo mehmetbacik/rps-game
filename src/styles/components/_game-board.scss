@@ -36,19 +36,10 @@
   }
 }
 /* ---------- RESPONSIVE DESIGN ---------- */
-@media screen and (max-width: $md-breakpoint) {
+@media screen and (max-width: $sm-breakpoint) {
   .game-board {
     min-height: 300px;
     margin: $spacing-unit * 20 auto;
-    .choices {
-      .choice-buttons {
-        min-height: 270px;
-      }
-    }
-  }
-}
-@media screen and (max-width: $sm-breakpoint) {
-  .game-board {
     .triangle {
       width: 242px;
       height: 220px;
@@ -56,6 +47,11 @@
     .pentagon {
       width: 250px;
       height: 250px;
+    }
+    .choices {
+      .choice-buttons {
+        min-height: 270px;
+      }
     }
   }
 }  

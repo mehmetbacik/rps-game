@@ -108,6 +108,46 @@
     }
   }
 }
+@media screen and (max-width: $sm-breakpoint) {
+  .choice-buttons {
+    &.triangle-wrapper {
+      .choice-button {
+        &.rock-position {
+          bottom: 20px;
+        }
+        &.paper-position {
+          left: 75px;
+        }
+        &.scissors-position {
+          right: 75px;
+        }
+      }
+    }
+    &.pentagon-wrapper {
+      .choice-button {
+        &.scissors-position {
+          top: -30px;
+        }
+        &.paper-position {
+          right: 60px;
+          top: 60px;
+        }
+        &.spock-position {
+          left: 60px;
+          top: 60px;
+        }
+        &.rock-position {
+          bottom: -15px;
+          right: 95px;
+        }
+        &.lizard-position {
+          bottom: -15px;
+          left: 95px;
+        }
+      }
+    }
+  }
+}  
 @media screen and (max-width: $xs-breakpoint) {
   .choice-buttons {
     &.triangle-wrapper {

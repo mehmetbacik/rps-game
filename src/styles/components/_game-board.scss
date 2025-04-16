@@ -39,10 +39,11 @@
 @media screen and (max-width: $sm-breakpoint) {
   .game-board {
     min-height: 300px;
+    max-width: fit-content;
     margin: $spacing-unit * 20 auto;
     .triangle {
-      width: 242px;
-      height: 220px;
+      width: 200px;
+      height: 178px;
     }
     .pentagon {
       width: 250px;
@@ -55,28 +56,4 @@
     }
   }
 }  
-@media screen and (max-width: $xs-breakpoint) {
-  .game-board {
-    .triangle {
-      width: 222px;
-      height: 200px;
-    }
-    .pentagon {
-      width: 250px;
-      height: 250px;
-    }
-  }
-}  
-@media screen and (max-width: $xxs-breakpoint) {
-  .game-board {
-    .triangle {
-      width: 200px;
-      height: 178px;
-    }
-    .pentagon {
-      width: 250px;
-      height: 250px;
-    }
-  }
-} 
 /* ---------- RESPONSIVE DESIGN ---------- */

@@ -34,7 +34,7 @@
   }
 }
 /* ---------- RESPONSIVE DESIGN ---------- */
-@media screen and (max-width: $md-breakpoint) {
+@media screen and (max-width: $sm-breakpoint) {
   .header {
     margin: $spacing-unit * 2 $spacing-unit * 4;
     padding: $spacing-unit * 4;

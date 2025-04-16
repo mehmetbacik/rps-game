@@ -8,14 +8,12 @@
   border: 2px solid $header-outline;
   color: $white;
   padding: $spacing-sm $spacing-xl;
-  border-radius: $radius-sm;
-  font-size: $text-md;
-  font-weight: $font-bold;
+  border-radius: $radius-md;
+  font-size: $font-size-base;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   cursor: pointer;
   transition: all $transition-normal;
-
   &:hover {
     background: rgba($white, 0.1);
   }
@@ -32,43 +30,51 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-}
-
-.rules-content {
-  background: $white;
-  padding: $spacing-xl;
-  border-radius: $radius-md;
-  max-width: 400px;
-  width: 100%;
-}
-
-.rules-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: $spacing-lg;
-
-  h2 {
-    color: $dark-text;
-    font-size: $text-xl;
-    text-transform: uppercase;
+  .rules-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $white;
+    padding: $spacing-xl;
+    border-radius: $radius-md;
+    max-width: 400px;
+    width: 100%;
+    .rules-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: $spacing-lg;
+      width: 100%;
+      h2 {
+        color: $dark-text;
+        font-size: $text-xl;
+        text-transform: uppercase;
+      }
+      .close-button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: $spacing-xs;
+      }
+    }
   }
-
-  .close-button {
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: $spacing-xs;
-  }
 }
-
-@media (max-width: 768px) {
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: $sm-breakpoint) {
   .rules-button {
     bottom: $spacing-lg;
     right: $spacing-lg;
   }
-
-  .rules-content {
-    padding: $spacing-lg;
+  .rules-modal {
+    .rules-content {
+      height: 100%;
+      max-width: -webkit-fill-available;
+      justify-content: center;
+      padding: $spacing-lg;
+      .rules-header {
+        margin-bottom: $spacing-xl;
+      }
+    }
   }
-} 
+}
+/* ---------- RESPONSIVE DESIGN ---------- */ 

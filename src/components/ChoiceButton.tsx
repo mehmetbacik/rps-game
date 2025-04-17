@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 interface ChoiceButtonProps {
   type: 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
-  position: 'rock-position' | 'paper-position' | 'scissors-position' | 'lizard-position' | 'spock-position' ;
+  position: 'rock-position' | 'paper-position' | 'scissors-position' | 'lizard-position' | 'spock-position' | 'center' ;
   onClick: () => void;
 }
 

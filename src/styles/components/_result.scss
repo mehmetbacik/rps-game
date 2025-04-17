@@ -54,8 +54,8 @@
     }
   }
 }
-
-@media (max-width: 768px) {
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: $sm-breakpoint) {
   .result {
     .choices {
       flex-direction: column;
@@ -75,3 +75,4 @@
     }
   }
 }
+/* ---------- RESPONSIVE DESIGN ---------- */

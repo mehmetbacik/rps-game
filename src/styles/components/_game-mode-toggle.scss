@@ -5,42 +5,32 @@
   bottom: $spacing-xl;
   left: $spacing-xl;
   z-index: 100;
-
   .toggle-container {
-    position: relative;
     display: flex;
     align-items: center;
-    background: rgba($white, 0.1);
-    padding: $spacing-xs;
-    border-radius: $radius-md;
+    background-color: rgba($white, 0.08);
     border: 2px solid $header-outline;
-
-    input[type="checkbox"] {
+    border-radius: $radius-md;
+    padding: $spacing-unit;
+    transition: background-color 0.3s ease;
+    min-width: 200px;
+    input[type='checkbox'] {
       display: none;
-
-      &:checked + label {
-        .mode-label.classic {
-          opacity: 0.5;
-        }
-        .mode-label.advanced {
-          opacity: 1;
-        }
-        &::before {
-          transform: translateX(100%);
-        }
+      &:checked + label::before {
+        transform: translateX(100%);
       }
     }
-
     label {
       position: relative;
       display: flex;
+      justify-content: space-between;
       align-items: center;
+      width: 100%;
       cursor: pointer;
-      padding: $spacing-sm $spacing-md;
-      border-radius: $radius-sm;
+      padding: $spacing-unit * 0.4 $spacing-unit * 2;
       background: transparent;
-      transition: all $transition-normal;
-
+      border-radius: $radius-sm;
+      transition: all 0.3s ease;
       &::before {
         content: '';
         position: absolute;
@@ -48,37 +38,65 @@
         left: 0;
         width: 50%;
         height: 100%;
-        background: $white;
+        background-color: $white;
         border-radius: $radius-sm;
-        transition: transform $transition-normal;
+        transition: transform 0.3s ease;
+        z-index: 0;
       }
-
       .mode-label {
         position: relative;
         z-index: 1;
-        color: $white;
         font-size: $text-sm;
         font-weight: $font-bold;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        width: 50%;
+        text-align: center;
+        transition: color 0.3s ease, opacity 0.3s ease;
         padding: $spacing-xs $spacing-sm;
-        transition: opacity $transition-normal;
-
+        letter-spacing: 1px;
         &.classic {
+          padding-right: $spacing-unit * 3.5;
+        }
+        &.advanced {
+          padding-left: $spacing-unit * 3.5;
+        }
+      }
+      &.mode-classic {
+        .mode-label.classic {
+          color: $black;
           opacity: 1;
         }
-
-        &.advanced {
+        .mode-label.advanced {
+          color: rgba($white, 0.5);
           opacity: 0.5;
+        }
+      }
+      &.mode-advanced {
+        .mode-label.classic {
+          color: rgba($white, 0.5);
+          opacity: 0.5;
+        }
+        .mode-label.advanced {
+          color: $black;
+          opacity: 1;
         }
       }
     }
   }
-}
-
-@media (max-width: 768px) {
-  .game-mode-toggle {
+  /* ---------- RESPONSIVE DESIGN ---------- */
+  @media screen and (max-width: $sm-breakpoint) {
     bottom: $spacing-lg;
     left: $spacing-lg;
+    .toggle-container {
+      min-width: 160px;
+      padding: $spacing-unit;
+      label {
+        padding: $spacing-unit * 0.75 $spacing-unit * 2;
+        .mode-label {
+          font-size: $text-xs;
+        }
+      }
+    }
   }
-} 
+  /* ---------- RESPONSIVE DESIGN ---------- */
+}

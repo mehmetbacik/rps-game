@@ -1,18 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useGame } from "@/context/GameContext";
 import ChoiceButton from "./ChoiceButton";
 import Image from "next/image";
-
-const animatedChoices = [
-  "rock",
-  "paper",
-  "scissors",
-  "lizard",
-  "spock",
-] as const;
 
 const Result = () => {
   const { state, resetGame } = useGame();
@@ -22,14 +14,27 @@ const Result = () => {
   >("rock");
   const [showResultText, setShowResultText] = useState(false);
   const [showWave, setShowWave] = useState(false);
+
+  const animationPool = useMemo(() => {
+    return state.gameMode === "classic"
+      ? ["rock", "paper", "scissors"]
+      : ["rock", "paper", "scissors", "lizard", "spock"];
+  }, [state.gameMode]);
+
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       setCurrentAnimationChoice(
-        animatedChoices[index % animatedChoices.length]
+        animationPool[index % animationPool.length] as
+          | "rock"
+          | "paper"
+          | "scissors"
+          | "lizard"
+          | "spock"
       );
       index++;
     }, 150);
+
     const loadingTimeout = setTimeout(() => {
       clearInterval(interval);
       setIsComputerLoading(false);
@@ -42,7 +47,7 @@ const Result = () => {
       clearInterval(interval);
       clearTimeout(loadingTimeout);
     };
-  }, []);
+  }, [animationPool]);
 
   return (
     <motion.div

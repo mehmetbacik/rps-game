@@ -68,7 +68,12 @@ const Result = () => {
         </div>
         <div className="result-text">
           {showResultText && (
-            <>
+            <motion.div
+              className="result-text"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
               <h2>
                 {state.result === "win" && "YOU WIN"}
                 {state.result === "lose" && "YOU LOSE"}
@@ -82,7 +87,7 @@ const Result = () => {
               >
                 PLAY AGAIN
               </motion.button>
-            </>
+            </motion.div>
           )}
         </div>
         <div className="choice">

@@ -5,6 +5,7 @@ $dark: #565468;
 $light: #f3f3f3;
 $white: #ffffff;
 $black: #000000;
+$red: #d73b56;
 
 // Scissors Colors
 $scissors-primary: hsl(39, 89%, 49%);
@@ -93,6 +94,7 @@ $container-padding: $spacing-unit * 4;
 
 // Breakpoints
 $breakpoints: (
+  "xs": 375px,
   "sm": 576px,
   "md": 768px,
   "lg": 992px,
@@ -100,6 +102,7 @@ $breakpoints: (
   "xxl": 1400px,
 );
 
+$xs-breakpoint: map-get($breakpoints, "xs");
 $sm-breakpoint: map-get($breakpoints, "sm");
 $md-breakpoint: map-get($breakpoints, "md");
 $lg-breakpoint: map-get($breakpoints, "lg");

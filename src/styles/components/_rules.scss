@@ -64,6 +64,7 @@
   .rules-button {
     bottom: $spacing-lg;
     right: $spacing-lg;
+    
   }
   .rules-modal {
     .rules-content {
@@ -75,6 +76,11 @@
         margin-bottom: $spacing-xl;
       }
     }
+  }
+}
+@media screen and (max-width: $xs-breakpoint) {
+  .rules-button {
+    padding: $spacing-sm;
   }
 }
 /* ---------- RESPONSIVE DESIGN ---------- */ 

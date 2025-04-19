@@ -2,13 +2,16 @@
 
 .game-board {
   position: relative;
-  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: $spacing-unit * 20 auto;
-  min-height: 400px;
   .choices {
     position: relative;
     width: 100%;
     height: 100%;
+    max-width: 500px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;

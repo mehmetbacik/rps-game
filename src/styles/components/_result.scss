@@ -140,6 +140,47 @@
 }
 
 /* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: $lg-breakpoint) {
+  .result {
+    margin: $spacing-unit * 5 $spacing-unit * 12;
+    .choice {
+      .choice-button {
+        width: 180px;
+        height: 180px;
+        &.winner {
+          &::before {
+            width: 220px;
+            height: 220px;
+          }
+          &::after {
+            width: 250px;
+            height: 250px;
+          }
+          .pulse-layer {
+            width: 280px;
+            height: 280px;
+          }
+        }
+        .inner {
+          width: 140px;
+          height: 140px;
+        }
+      }
+      h3 {
+        font-size: $text-lg;
+      }
+    }
+    .result-text {
+      h2 {
+        font-size: $text-3xl;
+      }
+      .play-again {
+        font-size: $text-md;
+        padding: $spacing-unit * 3 $spacing-unit * 8;
+      }
+    }
+  }
+}
 @media screen and (max-width: $md-breakpoint) {
   .result {
     margin: $spacing-unit * 5 $spacing-unit * 12;

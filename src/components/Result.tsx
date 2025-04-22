@@ -7,13 +7,14 @@ import ChoiceButton from "./ChoiceButton";
 import Image from "next/image";
 
 const Result = () => {
-  const { state, resetGame } = useGame();
+  const { state, resetGame, updateScore } = useGame();
   const [isComputerLoading, setIsComputerLoading] = useState(true);
   const [currentAnimationChoice, setCurrentAnimationChoice] = useState<
     "rock" | "paper" | "scissors" | "lizard" | "spock"
   >("rock");
   const [showResultText, setShowResultText] = useState(false);
   const [showWave, setShowWave] = useState(false);
+  const [scoreUpdated, setScoreUpdated] = useState(false);
 
   const animationPool = useMemo(() => {
     return state.gameMode === "classic"
@@ -22,6 +23,8 @@ const Result = () => {
   }, [state.gameMode]);
 
   useEffect(() => {
+    if (!state.playerChoice || scoreUpdated) return;
+
     let index = 0;
     const interval = setInterval(() => {
       setCurrentAnimationChoice(
@@ -41,13 +44,22 @@ const Result = () => {
       setTimeout(() => {
         setShowResultText(true);
         setShowWave(true);
+        if (!scoreUpdated) {
+          updateScore();
+          setScoreUpdated(true);
+        }
       }, 300);
     }, 2000);
     return () => {
       clearInterval(interval);
       clearTimeout(loadingTimeout);
     };
-  }, [animationPool]);
+  }, [animationPool, updateScore, state.playerChoice, scoreUpdated]);
+
+  const handlePlayAgain = () => {
+    setScoreUpdated(false);
+    resetGame();
+  };
 
   return (
     <motion.div
@@ -81,7 +93,7 @@ const Result = () => {
               </h2>
               <motion.button
                 className="play-again"
-                onClick={resetGame}
+                onClick={handlePlayAgain}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >

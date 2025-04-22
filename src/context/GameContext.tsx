@@ -64,7 +64,13 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
       playerChoice: choice,
       computerChoice,
       result,
-      score: result === "win" ? prev.score + 1 : result === "lose" ? Math.max(0, prev.score - 1) : prev.score,
+    }));
+  };
+
+  const updateScore = () => {
+    setState(prev => ({
+      ...prev,
+      score: prev.result === "win" ? prev.score + 1 : prev.result === "lose" ? Math.max(0, prev.score - 1) : prev.score,
     }));
   };
 
@@ -91,7 +97,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <GameContext.Provider value={{ state, setPlayerChoice, resetGame, toggleGameMode }}>
+    <GameContext.Provider value={{ state, setPlayerChoice, resetGame, toggleGameMode, updateScore }}>
       {children}
     </GameContext.Provider>
   );

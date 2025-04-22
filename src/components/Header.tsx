@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   const [popupShown, setPopupShown] = useState(false);
 
   useEffect(() => {
-    if (state.score > 3 && !popupShown) {
+    if (state.score > 2 && !popupShown) {
       setShowPopup(true);
       setPopupShown(true);
     }

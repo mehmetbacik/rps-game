@@ -14,4 +14,5 @@ export interface GameContextType {
   setPlayerChoice: (choice: Choice) => void;
   resetGame: () => void;
   toggleGameMode: () => void;
+  updateScore: () => void;
 } 

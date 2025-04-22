@@ -140,6 +140,47 @@
 }
 
 /* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: $md-breakpoint) {
+  .result {
+    margin: $spacing-unit * 5 $spacing-unit * 12;
+    .choice {
+      .choice-button {
+        width: 140px;
+        height: 140px;
+        &.winner {
+          &::before {
+            width: 180px;
+            height: 180px;
+          }
+          &::after {
+            width: 210px;
+            height: 210px;
+          }
+          .pulse-layer {
+            width: 240px;
+            height: 240px;
+          }
+        }
+        .inner {
+          width: 110px;
+          height: 110px;
+        }
+      }
+      h3 {
+        font-size: $text-sm;
+      }
+    }
+    .result-text {
+      h2 {
+        font-size: $text-2xl;
+      }
+      .play-again {
+        font-size: $text-sm;
+        padding: $spacing-unit * 3 $spacing-unit * 6;
+      }
+    }
+  }
+}
 @media screen and (max-width: $sm-breakpoint) {
   .result {
     .choices {
@@ -176,7 +217,7 @@
         }
       }
       h3 {
-        font-size: $text-md;
+        font-size: $text-xs;
       }
     }
     .result-text {
@@ -227,7 +268,7 @@
         }
       }
       h3 {
-        font-size: $text-sm;
+        font-size: $text-xs;
       }
     }
     .result-text {

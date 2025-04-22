@@ -1,13 +1,27 @@
 'use client';
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useGame } from "../context/GameContext";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import "../styles/components/_header.scss";
+
+import Popup from "./Popup";
 
 const Header: React.FC = () => {
   const { state } = useGame();
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupShown, setPopupShown] = useState(false);
+
+  useEffect(() => {
+    if (state.score > 3 && !popupShown) {
+      setShowPopup(true);
+      setPopupShown(true);
+    }
+  }, [state.score, popupShown]);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
 
   return (
     <header className="header">
@@ -37,6 +51,7 @@ const Header: React.FC = () => {
         <span className="score-label">Score</span>
         <h2 className="score-value">{state.score}</h2>
       </div>
+      {showPopup && <Popup onClose={handleClosePopup} />}
     </header>
   );
 };

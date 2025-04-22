@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useGame } from "../context/GameContext";
-import "../styles/components/_game-mode-toggle.scss";
 
 const GameModeToggle: React.FC = () => {
   const { state, toggleGameMode } = useGame();

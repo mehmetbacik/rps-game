@@ -39,11 +39,16 @@
   }
 }
 /* ---------- RESPONSIVE DESIGN ---------- */
+@media screen and (max-width: $md-breakpoint) {
+  .game-board {
+    margin: $spacing-unit * 10 auto;
+  }
+}  
 @media screen and (max-width: $sm-breakpoint) {
   .game-board {
     min-height: 300px;
     max-width: fit-content;
-    margin: $spacing-unit * 10 auto;
+    margin: $spacing-unit * 8 auto;
     .triangle {
       width: 200px;
       height: 178px;

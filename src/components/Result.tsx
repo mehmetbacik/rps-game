@@ -114,7 +114,7 @@ const Result = () => {
               <div className="inner">
                 <Image
                   src={`/images/icon-${currentAnimationChoice}.svg`}
-                  alt={currentAnimationChoice}
+                  alt="current Animation Choice"
                   width={50}
                   height={50}
                 />

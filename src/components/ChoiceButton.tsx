@@ -41,7 +41,7 @@ const ChoiceButton = ({
         ) : (
           <Image
             src={`/images/icon-${type}.svg`}
-            alt={type}
+            alt="icon-type"
             width={50}
             height={50}
           />

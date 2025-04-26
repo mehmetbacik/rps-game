@@ -24,7 +24,7 @@ const GameBoard = () => {
             <div className={state.gameMode === 'classic' ? 'triangle' : 'pentagon'}>
               <Image
                 src={`/images/bg-${state.gameMode === 'classic' ? 'triangle' : 'pentagon'}.svg`}
-                alt={state.gameMode === 'classic' ? 'Triangle' : 'Pentagon'}
+                alt="Game mode"
                 width={state.gameMode === 'classic' ? 313 : 400}
                 height={state.gameMode === 'classic' ? 278 : 400}
                 priority

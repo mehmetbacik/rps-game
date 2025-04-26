@@ -37,7 +37,7 @@ const ChoiceButton = ({
       {!loading && <div className="pulse-layer" />}
       <div className="inner">
         {loading ? (
-          <div className="loader" />
+          <div className="loader" data-testid="loader" />
         ) : (
           <Image
             src={`/images/icon-${type}.svg`}

@@ -34,6 +34,7 @@ const Popup: React.FC<PopupProps> = ({ onClose }) => {
             </div>
             <motion.div
               className="tail"
+              data-testid="tail"
               animate={{ rotate: [0, 20, -20, 10, -10, 0] }}
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
             />

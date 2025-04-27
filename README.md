@@ -1,4 +1,4 @@
-# Easybank Landing Page
+# Rock Paper Scissors Game
 
 A web-based implementation of the classic **Rock, Paper, Scissors** game, with an **Advanced Mode** that includes **Lizard** and **Spock**. Built using React, TypeScript, SCSS, and Framer Motion, this game features responsive design, smooth animations, state management with Context API, and score persistence with LocalStorage.
 
